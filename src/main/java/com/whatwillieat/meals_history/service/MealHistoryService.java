@@ -24,7 +24,7 @@ public class MealHistoryService {
         mealHistory.setUserId(dto.getUserId());
         mealHistory.setMealId(dto.getMealId());
         mealHistory.setRating(dto.getRating());
-        mealHistory.setEatenOn(dto.getEatenOn());
+        mealHistory.setConsumedOn(dto.getConsumedOn());
         mealHistory.setDeleted(false);
 
         MealHistory savedMeal = mealHistoryRepository.save(mealHistory);
@@ -55,7 +55,7 @@ public class MealHistoryService {
                 mealHistory.getUserId(),
                 mealHistory.getMealId(),
                 mealHistory.getRating(),
-                mealHistory.getEatenOn()
+                mealHistory.getConsumedOn()
         );
     }
 }

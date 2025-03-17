@@ -18,6 +18,6 @@ public class MealHistoryResponseDTO {
     private int rating;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime eatenOn;
+    private LocalDateTime consumedOn;
 }
 

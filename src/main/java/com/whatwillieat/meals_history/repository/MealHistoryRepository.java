@@ -14,7 +14,7 @@ import java.util.UUID;
 @Repository
 public interface MealHistoryRepository extends JpaRepository<MealHistory, UUID> {
 
-    @Query("SELECT mh FROM MealHistory mh WHERE mh.userId = :userId AND mh.eatenOn >= :startDate AND mh.isDeleted = false")
+    @Query("SELECT mh FROM MealHistory mh WHERE mh.userId = :userId AND mh.consumedOn >= :startDate AND mh.isDeleted = false")
     List<MealHistory> findRecentMeals(@Param("userId") UUID userId, @Param("startDate") LocalDateTime startDate);
 
     Optional<MealHistory> findByIdAndIsDeletedFalse(UUID id);

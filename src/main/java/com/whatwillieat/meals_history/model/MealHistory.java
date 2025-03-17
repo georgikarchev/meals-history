@@ -29,7 +29,7 @@ public class MealHistory {
     private Integer rating; // Optional (1-10)
 
     @Column(nullable = false)
-    private LocalDateTime eatenOn; // When the meal was eaten
+    private LocalDateTime consumedOn; // When the meal was eaten
 
     @Column(nullable = false)
     private LocalDateTime createdOn;
