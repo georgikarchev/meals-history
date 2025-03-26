@@ -1,6 +1,8 @@
 package com.whatwillieat.meals_history.web;
 
+import com.whatwillieat.meals_history.model.MealHistory;
 import com.whatwillieat.meals_history.service.MealHistoryService;
+import com.whatwillieat.meals_history.web.dto.MealHistoryRatingRequest;
 import com.whatwillieat.meals_history.web.dto.MealHistoryRequestDTO;
 import com.whatwillieat.meals_history.web.dto.MealHistoryResponseDTO;
 import jakarta.validation.Valid;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -47,6 +50,13 @@ public class MealHistoryController {
         return mealHistoryService.getMealHistoryById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}/rating")
+    public ResponseEntity<MealHistoryResponseDTO> updateMealRating(
+            @PathVariable UUID id,
+            @RequestBody @Valid MealHistoryRatingRequest mealHistoryRatingRequest) {
+        return ResponseEntity.ok(mealHistoryService.updateMealHistoryRating(id, mealHistoryRatingRequest));
     }
 
     @DeleteMapping("/{id}")

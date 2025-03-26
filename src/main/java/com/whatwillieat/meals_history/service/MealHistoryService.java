@@ -2,8 +2,10 @@ package com.whatwillieat.meals_history.service;
 
 import com.whatwillieat.meals_history.model.MealHistory;
 import com.whatwillieat.meals_history.repository.MealHistoryRepository;
+import com.whatwillieat.meals_history.web.dto.MealHistoryRatingRequest;
 import com.whatwillieat.meals_history.web.dto.MealHistoryRequestDTO;
 import com.whatwillieat.meals_history.web.dto.MealHistoryResponseDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,16 @@ public class MealHistoryService {
 
     public Optional<MealHistoryResponseDTO> getMealHistoryById(UUID id) {
         return mealHistoryRepository.findByIdAndIsDeletedFalse(id).map(this::mapToResponseDTO);
+    }
+
+    public MealHistoryResponseDTO updateMealHistoryRating(UUID id, MealHistoryRatingRequest ratingRequest) {
+        MealHistory mealHistory = mealHistoryRepository.findById(id).orElse(null);
+
+        if (mealHistory == null) {
+            throw new EntityNotFoundException("MealHistory with id " + id + " not found");
+        }
+        mealHistory.setRating(ratingRequest.getRating());
+        return mapToResponseDTO(mealHistoryRepository.save(mealHistory));
     }
 
     public void softDeleteMealHistory(UUID id) {
