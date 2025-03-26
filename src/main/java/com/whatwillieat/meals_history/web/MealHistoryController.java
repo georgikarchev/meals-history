@@ -26,7 +26,7 @@ public class MealHistoryController {
     }
 
     @PostMapping
-    public ResponseEntity<MealHistoryResponseDTO> saveMealHistory(@RequestBody @Valid MealHistoryRequestDTO mealHistoryDTO) {
+    public ResponseEntity<MealHistoryResponseDTO> addMealToHistory(@RequestBody @Valid MealHistoryRequestDTO mealHistoryDTO) {
         MealHistoryResponseDTO savedMeal = mealHistoryService.saveMealHistory(mealHistoryDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMeal);
     }
