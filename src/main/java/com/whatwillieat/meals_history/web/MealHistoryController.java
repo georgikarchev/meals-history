@@ -1,6 +1,5 @@
 package com.whatwillieat.meals_history.web;
 
-import com.whatwillieat.meals_history.model.MealHistory;
 import com.whatwillieat.meals_history.service.MealHistoryService;
 import com.whatwillieat.meals_history.web.dto.MealHistoryRequestDTO;
 import com.whatwillieat.meals_history.web.dto.MealHistoryResponseDTO;
@@ -21,6 +20,7 @@ public class MealHistoryController {
 
     private final MealHistoryService mealHistoryService;
 
+    @Autowired
     public MealHistoryController(MealHistoryService mealHistoryService) {
         this.mealHistoryService = mealHistoryService;
     }
