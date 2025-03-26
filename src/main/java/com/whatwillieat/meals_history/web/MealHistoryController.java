@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("${app.API_V1_BASE_URL}/meal-history")
+@RequestMapping("${app.API_V1_BASE_URL}/meals-history")
 public class MealHistoryController {
 
     private final MealHistoryService mealHistoryService;
