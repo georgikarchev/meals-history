@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,10 +35,12 @@ public class MealHistoryController {
     @GetMapping("/recent")
     public ResponseEntity<List<MealHistoryResponseDTO>> getRecentMeals(
             @RequestParam UUID userId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate) {
-        List<MealHistoryResponseDTO> meals = mealHistoryService.getRecentMeals(userId, startDate);
+            @RequestParam String startDate) {
+        LocalDateTime parsedDate = LocalDateTime.parse(startDate, DateTimeFormatter.ISO_DATE_TIME);
+        List<MealHistoryResponseDTO> meals = mealHistoryService.getRecentMeals(userId, parsedDate);
         return ResponseEntity.ok(meals);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<MealHistoryResponseDTO> getMealHistoryById(@PathVariable UUID id) {
