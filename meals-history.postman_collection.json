@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "f5729b35-4f3e-45bd-8945-f271f8edd395",
+		"name": "meals-history",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18892565"
+	},
+	"item": [
+		{
+			"name": "add meal to history",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "meals-history-api-key-123123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"8f7f2165-b42c-4aef-bf18-5967e19bcaff\",\n    \"mealId\":\"34b8d51f-8072-4630-a36d-72cf17986018\",\n    \"rating\": 5,\n    \"consumedOn\": \"2025-03-23T12:30:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/meals-history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"meals-history"
+					],
+					"query": [
+						{
+							"key": "mealTypes",
+							"value": "SNACK",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update rating",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "meals-history-api-key-123123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rating\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1/meals-history/7b1c7317-61c6-4410-ab7b-30996052d5f6/rating",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"meals-history",
+						"7b1c7317-61c6-4410-ab7b-30996052d5f6",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "mealTypes",
+							"value": "SNACK",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user's meals history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "meals-history-api-key-123123",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/meals-history/recent?userId=8f7f2165-b42c-4aef-bf18-5967e19bcaff&startDate=2025-03-20T21:43:43.420Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"meals-history",
+						"recent"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "8f7f2165-b42c-4aef-bf18-5967e19bcaff"
+						},
+						{
+							"key": "startDate",
+							"value": "2025-03-20T21:43:43.420Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get meal history by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "meals-history-api-key-123123",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/meals-history/2025-03-26T21:43:43.420Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"meals-history",
+						"2025-03-26T21:43:43.420Z"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
